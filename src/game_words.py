@@ -1,9 +1,9 @@
 word_list = [
 'aɬqi', 
-'wəx̣t',   
+'wəx\u0323t',   
 'alta', 
 'kʰəpit', 
-'itsx̣ut', 
+'itsx\u0323ut',
 'shayim', 
 'kələkələ',  
 'spuʔuq',
