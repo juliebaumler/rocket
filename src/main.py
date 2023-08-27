@@ -2,13 +2,14 @@
 import random
 import os
 import sys
+import gettext
 from game_words import word_list
 from game_art import stages, logo
 DEBUG=1;
 
 
 def choose_word():
-    chosen_word = random.choice(word_list)    
+    chosen_word = random.choice(word_list)  
     return chosen_word
 
 
@@ -17,10 +18,10 @@ def guess_a_letter():
     guess = ""
 
     #os.system("clear")
-    guess = input("mayka palach t'səm-bit: ")
+    guess = input(_("GIVE A LETTER: "))
     # quit if "." entered
     if guess == ".":
-        print("aɬqi!")
+        print(_("BYE!"))
         sys.exit();
 
     # translate some common typing conventions for IPA characters
@@ -29,14 +30,14 @@ def guess_a_letter():
     trans_dict = {'7':'ʔ','3':'ə','E':'ə','X':'x\u0323', 'H':'ʰ', 'L':'ɬ'}
     mytable = guess.maketrans(trans_dict)
     guess = guess.translate(mytable).casefold()
-    print("t'ɬunas-t'səm-bit: ", guess)
+    print(_("GUESSED LETTER: "), guess)
 
     valid_alphabet_list = [".", "'", "a", "b", "ch", "c'h", "d", "dj", "dz", "e", "ə", "f", "g", "h", "ʰ", "i", "k", "kʰ", "kʰw", "kw", "k'", "k'w", "l", "ɬ", "m", "n", "o", "p", "pʰ", "p'", "q", "qw", "qʰ", "qʰw", "q'", "q'w", "s", "sh", "t", "tʰ", "t'", "tɬ", "t'ɬ", "ts", "t's", "u", "v", "w", "x", "x\u0323", "x\u0323w", "y", "zh", "á", "ú", "í", "ʔ", "?"]
     #if "x̣" in valid_alphabet_list:
     #    print("It's in the freaking list")
     while not (guess in valid_alphabet_list):
-        print("wik t'səm-bit ukuk. munk-kakwa wəx\u0323t.\n")
-        guess = input("mayka palach t'səm-bit: ")   # um....does this do anything weird?
+        print(_("NOT A LETTER. TRY AGAIN.\n"))
+        guess = input(_("GIVE A LETTER: "))   # um....does this do anything weird?
         guess = guess.translate(mytable).casefold()   # just needs the processing again
     
     return guess 
@@ -47,7 +48,7 @@ def letter_check(word, letter, display_list, lives):
     location=word.find(letter);
     if location == -1:
         # not found
-        print("t'sipi!\n")
+        print(_("MISSED!"), "\n")
         lives -= 1
     else:
         while location != -1:
@@ -76,6 +77,9 @@ def create_display(word):
 
 
 os.system("clear")
+lang1 = gettext.translation('rocket', localedir='../locale', languages=['en'])
+lang2 = gettext.translation('rocket', localedir='../locale', languages=['chn'])
+lang2.install()
 print(logo)
 
 lives = 6
@@ -101,8 +105,7 @@ while "_" in display_list and not lives == 0:
     #print(f"Guess: {guess}\n")
 
     while guess in used:
-        print(f"anqati nayka munk t'səm-bit {guess}. munk-t'ɬunas wəx\u0323t.");
-        print(f"(You used {guess} already. Try again.)")
+        print( _("USED ALREADY. TRY AGAIN."))
         guess = guess_a_letter()
     used.append(guess)    
 
@@ -120,12 +123,13 @@ while "_" in display_list and not lives == 0:
         
 
     print(f"{output_dl}\n")
-    print(f"Remaining Lives: {lives}\n")
+    print( _("GUESSES LEFT: "),"{lives}\n")
   
 if not "_" in display_list:
-    print("dret ɬush! mayka tulu!")
+    print(_("GREAT! YOU WIN!"))
 elif lives == 0:
-    print(f"The word was: {chosen_word}\n")
-    print("wik mayka tulu. :( ")
+    print( _("THE WORD WAS: {chosen_word}\n"))
+    print(_("DIDN'T WIN"))
+    
 
 

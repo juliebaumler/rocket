@@ -1,0 +1,53 @@
+# rocket chinook wawa word guess game
+# This file is distributed under the same license as the rocket package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-27 02:08-0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: main.py:21 main.py:40
+msgid "GIVE A LETTER: "
+msgstr "Give me a letter: "
+
+#: main.py:24
+msgid "BYE!"
+msgstr "Bye!"
+
+#: main.py:33
+msgid "GUESSED LETTER: "
+msgstr "You guessed: "
+
+#: main.py:39
+msgid "NOT A LETTER. TRY AGAIN.\n"
+msgstr "That's not a chinuk wawa letter, try again.\n"
+
+#: main.py:51
+msgid "MISSED!"
+msgstr "Nope!"
+
+msgid "USED ALREADY. TRY AGAIN."
+msgstr "You used {guess} already. Try again."
+
+msgid "GUESSES LEFT: "
+msgstr "Remaining Guesses: "
+
+msgid "THE WORD WAS: {chosen_word}\n"
+msgstr "The word was: {chosen_word}\n"
+
+#: main.py:130
+msgid "GREAT! YOU WIN!"
+msgstr "Very good! You win!"
+
+#: main.py:133
+msgid "DIDN'T WIN"
+msgstr "You didn't win. :( "
+
